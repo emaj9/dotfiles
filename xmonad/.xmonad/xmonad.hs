@@ -23,7 +23,7 @@ import qualified Data.Map        as M
 
 import Data.List ( sort, intercalate )
 
-myScreenWidth   = 1680
+myScreenWidth   = 1366
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -101,12 +101,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask                , xK_F7         ), spawn "xbacklight -inc 10")
 
     -- Music controls
-    , ((modMask                , xK_Page_Up    ), spawn "mpc-prev")
-    , ((modMask                , xK_Page_Down  ), spawn "mpc-next")
-    , ((modMask .|. shiftMask  , xK_Page_Up    ), spawn "mpc-prev-remote")
-    , ((modMask .|. shiftMask  , xK_Page_Down  ), spawn "mpc-next-remote")
+    , ((modMask                , xK_F1         ), spawn "mpc-prev")
+    , ((modMask                , xK_F2         ), spawn "mpc-next")
+    , ((modMask .|. shiftMask  , xK_F1         ), spawn "mpc-prev-remote")
+    , ((modMask .|. shiftMask  , xK_F2         ), spawn "mpc-next-remote")
     , ((modMask                , xK_Pause      ), spawn "mpc --host $HOME/.mpd/socket toggle")
-    , ((modMask .|. shiftMask  , xK_Pause      ), spawn "mpc-toggle")
+    , ((modMask .|. shiftMask  , xK_F8         ), spawn "mpc-toggle")
     , ((modMask                , xK_Scroll_Lock), spawn "nowplaying.sh")
 
     -- close focused window; only deletes a copy
