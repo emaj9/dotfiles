@@ -12,12 +12,10 @@ function trywallpaper () {
 
 xrdb -merge $HOME/.Xresources &
 xmodmap "$HOME/.Xmodmap" &
-
+xset -b &
 # start some nice programs
 trywallpaper "835.png" "stallman.png" "ycombinator.png" "sofybakni.jpg" &
-steam_wishlist_watcher.sh &
 redshift &
-zeno &
 xsetroot -cursor_name left_ptr &
 dunst &
 (   which xautolock slock >/dev/null &&

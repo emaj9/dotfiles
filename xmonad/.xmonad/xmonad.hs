@@ -42,7 +42,7 @@ browserHome = "http://jerrington.me/"
 myModMask       = mod4Mask
 
 -- Default workspaces
-myWorkspaces    = [ "irc", "web", "code", "shell", "music" ]
+myWorkspaces    = [  "shell", "web", "code", "music" ]
 
 -- Border colors for unfocused and focused windows, respectively.
 myNormalBorderColor  = "#222255"
@@ -87,9 +87,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask  , xK_z          ), spawn "slock")
 
     -- Volume controls
-    , ((modMask                , xK_F8         ), spawn "$HOME/bin/volume toggle")
-    , ((modMask                , xK_F9         ), spawn "$HOME/bin/volume -5%")
-    , ((modMask                , xK_F10        ), spawn "$HOME/bin/volume +5%")
+    , ((0                      , 0x1008ff12    ), spawn "pactl set-sink-mute 0 toggle")
+    , ((0                      , 0x1008ff11    ), spawn "pactl set-sink-volume 0 -5%")
+    , ((0                      , 0x1008ff13    ), spawn "pactl set-sink-volume 0 +5%")
     , ((modMask .|. shiftMask  , xK_F9         ), spawn "mpc --host $HOME/.mpd/socket volume -5")
     , ((modMask .|. shiftMask  , xK_F10        ), spawn "mpc --host $HOME/.mpd/socket volume +5")
 
@@ -212,7 +212,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Layouts:
 
 myLayout = workspaceDir "~" $ smartBorders $ smartSpacing 5 $
-           Full ||| (avoidStrutsOn [U] tiled)
+            (avoidStrutsOn [U] $ Full ||| tiled)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -281,7 +281,7 @@ myLogHook h = dynamicLogWithPP tsaniPP { ppOutput = hPutStrLn h }
 myUrgencyHook = dzenUrgencyHook
 
 myDzenCommand = "dzen2 -dock -p -x 0 -w " ++ show width where
-    width = myScreenWidth * 2 `div` 3
+    width = myScreenWidth * 1 `div` 2
 
 myConkyCommand = concat
     [ "conky | dzen2 -dock"
@@ -289,8 +289,8 @@ myConkyCommand = concat
     , " -w ", show width
     , " -ta r"
     ] where
-        width = myScreenWidth * 1 `div` 3
-        offset = myScreenWidth * 2 `div` 3
+        width = myScreenWidth * 1 `div` 2
+        offset = myScreenWidth * 2 `div` 4
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
