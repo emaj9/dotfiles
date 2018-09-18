@@ -8,7 +8,7 @@
 # Failing that, abort with an error message.
 
 set -e
-
+which emacs >/dev/null && emacs $@ &! exit 0
 if test -n "$NVIM_LISTEN_ADDRESS" ; then
     if which nvr > /dev/null ; then
         exec nvr --remote $@

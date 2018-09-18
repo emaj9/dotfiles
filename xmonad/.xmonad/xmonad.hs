@@ -23,7 +23,7 @@ import qualified Data.Map        as M
 
 import Data.List ( sort, intercalate )
 
-myScreenWidth   = 1680
+myScreenWidth   = 1366
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -33,7 +33,7 @@ myTerminal      = "urxvt"
 myBorderWidth   = 2
 
 -- Home page to open when launching a web browser
-browserHome = "http://jerrington.me/"
+browserHome = "https://www,duckduckgo.com"
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -46,7 +46,7 @@ myWorkspaces    = [  "shell", "web", "code", "music" ]
 
 -- Border colors for unfocused and focused windows, respectively.
 myNormalBorderColor  = "#222255"
-myFocusedBorderColor = "#DD0000"
+myFocusedBorderColor = "#0000DD"
 
 spawnDmenu :: X ()
 spawnDmenu = do
@@ -290,7 +290,7 @@ myConkyCommand = concat
     , " -ta r"
     ] where
         width = myScreenWidth * 1 `div` 2
-        offset = myScreenWidth * 2 `div` 4
+        offset = myScreenWidth * 1 `div` 2
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
